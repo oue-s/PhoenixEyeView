@@ -30,7 +30,15 @@
 </head>
 
 <body>
-    <a href="https://yahoo.co.jp">index_2 </a>
+    {% if current_user.is_authenticated %}
+    <p>{{ current_user.name }} さんこんにちは</p>
+    {% else %}
+    <p>ログインしていません</p>
+    {% endif %}
+
+    test print {{ current_user.name }}
+
+
 
     <script>
         var myVariable = "/static/data/disp_2.csv";
