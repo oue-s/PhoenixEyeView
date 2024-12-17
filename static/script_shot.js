@@ -128,20 +128,20 @@ d3.csv(myVariable).then(data => {
 
         labels.exit().remove();
 
-        // イベント画像の描画
-        // const images = svg.selectAll(".event-image")
-        //     .data(data, d => d.event);
+        イベント画像の描画
+        const images = svg.selectAll(".event-image")
+            .data(data, d => d.event);
 
-        // images.enter().append("image")
-        //     .attr("class", "event-image")
-        //     .merge(images)
-        //     .attr("x", d => d.startDate.getTime() === d.endDate.getTime() ? (x(d.startDate) - 20) : ((x(d.startDate) + x(d.endDate)) / 2 - 20))
-        //     .attr("y", d => groupScale(d.group) + (groupScale.bandwidth() / 4) - 20)
-        //     .attr("width", 40)
-        //     .attr("height", 40)
-        //     .attr("href", d => d.image); // 画像のURLを設定
+        images.enter().append("image")
+            .attr("class", "event-image")
+            .merge(images)
+            .attr("x", d => d.startDate.getTime() === d.endDate.getTime() ? (x(d.startDate) - 20) : ((x(d.startDate) + x(d.endDate)) / 2 - 20))
+            .attr("y", d => groupScale(d.group) + (groupScale.bandwidth() / 4) - 20)
+            .attr("width", 40)
+            .attr("height", 40)
+            .attr("href", d => d.image); // 画像のURLを設定
 
-        // images.exit().remove();
+        images.exit().remove();
     }
 
     // ズームとパンの設定
