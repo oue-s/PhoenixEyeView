@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チェックボックス付きテーブル</title>
+</head>
+
+<body>
+
+    <h1>項目を選んでください</h1>
+    <form action="/" method="POST">
+        <label for="numberInput">時間軸変換:</label>
+        <input type="number" id="numberInput" name="number" required>
+  
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>項目</th>
+                    <th>選択</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>地質時代</td>
+                    <td><input type="checkbox" name="items" value="earth_point"></td>
+                </tr>
+                <tr>
+                    <td>人類史</td>
+                    <td><input type="checkbox" name="items" value="human_point"></td>
+                </tr>
+                <tr>
+                    <td>大陸の変遷</td>
+                    <td><input type="checkbox" name="items" value="dinosaur_point"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit">決定</button>
+    </form>
+</body>
+
+</html>

@@ -23,7 +23,9 @@ const xAxis = d3.axisBottom(x).tickFormat(d => {
     }
     return formatYear(d);
 });
+
 document.write(myVariable)
+
 // CSVファイルの読み込み
 d3.csv(myVariable).then(data => {
     // データのパース

@@ -1,4 +1,4 @@
-from flask import Flask, flash, redirect, render_template, request
+from flask import Flask, flash, redirect, render_template, request, session
 from current_disp import create_crrent_disp
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -95,28 +95,53 @@ def unregister():
     return redirect("/")
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
-    # user = User.select().where(User.email == request.form["email"]).first()
-    # postメソッドでユーザーから指定される
-    his_0_name = "earth_point"
-    his_1_name = "human_point"
-    # ここはloginユーザー名をつけたい
-    # disp_his_name = "disp_2"
-    disp_his_name = f"disp_{current_user.name}"
-    # postメソッド で時間軸変換を指定する
-    # 現状 1 起点を揃える 2 起点と終点を揃える 3 起点を揃えて、傾きを変える
-    calc_method = 2
-    # 予備の変数 現状slopeに使う
-    a = 7
-    try:
-        # 指定の加工が施されたCSVファイルが作成される
-        create_crrent_disp(his_0_name, his_1_name, disp_his_name, calc_method, a)
-        return render_template("index.html")
-    except IntegrityError as e:
-        flash(f"{e}")
+    if request.method == "POST":
+        # 前回入力値を保存する
+        selected_items = request.form.getlist("items")
+        session["selected_items"] = selected_items
+
+        # user = User.select().where(User.email == request.form["email"]).first()
+        # postメソッドでユーザーから指定される
+        # his_0_name = "earth_point"
+        # his_1_name = "human_point"
+        items = request.form.getlist("items")
+        his_0_name = items[0]
+        his_1_name = items[1]
+
+        # ここはloginユーザー名をつけたい
+        # disp_his_name = "disp_2"
+        disp_his_name = f"disp_{current_user.name}"
+        # postメソッド で時間軸変換を指定する
+        # 現状 1 起点を揃える 2 起点と終点を揃える 3 起点を揃えて、傾きを変える
+        # calc_method = 0
+        calc_method = int(request.form["number"])
+        # 予備の変数 現状slopeに使う
+        a = 7
+        try:
+            # 指定の加工が施されたCSVファイルが作成される
+            create_crrent_disp(his_0_name, his_1_name, disp_his_name, calc_method, a)
+            return render_template("index.html")
+        except IntegrityError as e:
+            flash(f"{e}")
 
     return render_template("index.html")
+
+
+@app.route("/select")
+def select():
+    selected_items = session.get("selected_items", [])
+    return render_template("select.html", selected_items=selected_items)
+    return render_template("select.html")
+
+
+@app.route("/test", methods=["POST"])
+def test():
+    items = request.form.getlist("items")
+    selected_items = ", ".join(items)
+    # return f"選択された項目は: {selected_items} です"
+    return items
 
 
 if __name__ == "__main__":
