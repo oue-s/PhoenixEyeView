@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>年表</title>
+    <title>Phoenix Eye Viewer</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
         body {
@@ -26,19 +26,22 @@
             fill: darkorange;
             font-size: 15px;
         }
+
     </style>
 </head>
 
 <body>
     {% if current_user.is_authenticated %}
-    <p>{{ current_user.name }} さんこんにちは</p>
+    <p>Phoenix Eye Viewerへ ようこそ{{ current_user.name }} さん</p>
     {% else %}
     <p>ログインしていません</p>
     {% endif %}
 
-    <a href=login>LogIn</a>
-    <a href=register>Register</a>
-    <a href=logout>LogOut</a>
+    <a href=login style="float:right">| LogIn |</a>
+    <a href=register style="float:right">| Register |</a>
+    <a href=logout style="float:right">| LogOut |</a>
+
+    <br>
     <a href=select>Select History</a>
 
     <script>
@@ -47,7 +50,7 @@
     </script>
 
     <div class="button-container">
-        <button class="button" id="show-all-button">全期間を表示</button>
+        <button class="button" id="show-all-button">All Period</button>
     </div>
 
     <div class="chart"></div>

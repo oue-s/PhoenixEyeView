@@ -24,7 +24,7 @@ const xAxis = d3.axisBottom(x).tickFormat(d => {
     return formatYear(d);
 });
 
-document.write(myVariable)
+// document.write(myVariable)
 
 // CSVファイルの読み込み
 d3.csv(myVariable).then(data => {
@@ -133,8 +133,8 @@ d3.csv(myVariable).then(data => {
             .merge(images)
             .attr("x", d => d.startYear === d.endYear ? x(d.startYear) - 25 : (x(d.startYear) + x(d.endYear)) / 2 - 25)
             .attr("y", d => groupScale(d.group) + (groupScale.bandwidth() / 4) +20)
-            .attr("width", 40)
-            .attr("height", 40)
+            .attr("width", 70)
+            .attr("height", 70)
             .attr("xlink:href", d => d.image);
 
         images.exit().remove();
