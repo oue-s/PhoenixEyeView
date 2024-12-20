@@ -146,7 +146,7 @@ d3.csv(myVariable).then(data => {
 
     // ズームとパンの設定
     let zoom = d3.zoom()
-        .scaleExtent([0.1, 10])
+        .scaleExtent([0.1, 1000])
         .on("zoom", zoomed);
 
     svg.call(zoom);

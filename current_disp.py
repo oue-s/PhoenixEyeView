@@ -86,7 +86,7 @@ def create_crrent_disp(his_0_name, his_1_name, disp_his_name, calc_method, a):
 
     # 表示する歴史ファイルを作成される(実際にはユーザー毎に名前が指定される)
     # disp_his_name = "disp_1"
-    with open(f"static/data/{disp_his_name}.csv", "w", encoding="utf-8") as disp_csv:
+    with open(f"static/data/{disp_his_name}.csv", "w", encoding="utf-8", newline="") as disp_csv:
         writer = csv.writer(disp_csv)
         writer.writerows(his_sum_list)
 
@@ -94,11 +94,11 @@ def create_crrent_disp(his_0_name, his_1_name, disp_his_name, calc_method, a):
 if __name__ == "__main__":
 
     # デバグ用単独に動かす
-    his_0_name = "earth_point"
-    his_1_name = "human_point"
+    his_0_name = "ieyasu"
+    his_1_name = "nobunaga"
     # ここはloginユーザー名をつけたい
-    disp_his_name = "disp_2"
+    disp_his_name = "disp_guest_01"
     # 指定の加工が施されたCSVファイルが作成される
-    calc_method = 1
+    calc_method = 0
     a = 1
     create_crrent_disp(his_0_name, his_1_name, disp_his_name, calc_method, a)
