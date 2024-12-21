@@ -91,8 +91,17 @@
 
     <form action="/" method="POST">
         <button type="submit">決定     </button>
+        
         <label for="numberInput">時間軸変換:</label>
-        <input type="number" id="numberInput" name="number" required>
+        <select id="numberInput" name="number" required>
+            <option value="0">無変換</option> 
+            <option value="1">起点を揃える</option> 
+            <option value="2">起点と終点を揃える</option>
+            <option value="3">起点を揃え、任意の倍率</option>
+            <option value="0">任意のポイントを揃える</option>
+            <option value="0">人→猫 変換</option>
+        </select>       
+
         <br>
         <input type="checkbox" name="items" value="ieyasu">
         <p class="inline-elements">徳川家康の生涯</p>

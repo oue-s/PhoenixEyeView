@@ -4,6 +4,7 @@ from flask_login import LoginManager, current_user, login_required, login_user, 
 from werkzeug.security import generate_password_hash, check_password_hash
 from peewee import IntegrityError
 from config import User
+import os
 
 
 app = Flask(__name__)
@@ -26,6 +27,7 @@ def unauthorized_handler():
 
 # ユーザー登録フォームの表示・登録処理
 @app.route("/register", methods=["GET", "POST"])
+@login_required
 def register():
     if request.method == "POST":
         # データの検証
@@ -63,7 +65,7 @@ def login():
         user = User.select().where(User.email == request.form["email"]).first()
         if user is not None and check_password_hash(user.password, request.form["password"]):
             login_user(user)
-            flash(f"ようこそ！ {user.name} さん")
+            #flash(f"ようこそ！ {user.name} さん")
             return redirect("/")
 
         # NGならフラッシュメッセージを設定
@@ -76,9 +78,10 @@ def login():
 @app.route("/logout")
 @login_required
 def logout():
-    # ログインしていない場合の処理
-    if not current_user.is_authenticated:
-        return "ログインしていません"
+
+    # ユーザが表示のために生成したファイルを削除する
+    if os.path.exists(f"static/data/disp_{current_user.name}.csv"):
+        os.remove(f"static/data/disp_{current_user.name}.csv")
 
     logout_user()
     flash("ログアウトしました！")
@@ -96,12 +99,10 @@ def unregister():
 
 
 @app.route("/", methods=["GET", "POST"])
+@login_required
 def index():
-    if request.method == "POST":
-        # 前回入力値を保存する
-        selected_items = request.form.getlist("items")
-        session["selected_items"] = selected_items
 
+    if request.method == "POST":
         # user = User.select().where(User.email == request.form["email"]).first()
         # postメソッドでユーザーから指定される
         # his_0_name = "earth_point"
@@ -131,17 +132,13 @@ def index():
 
 @app.route("/select")
 def select():
-    selected_items = session.get("selected_items", [])
+    # 前回入力値を保存する
+    selected_items = request.form.getlist("items")
+    session["selected_items"] = selected_items
+
+    # selected_items = session.get("selected_items", [])
     return render_template("select.html", selected_items=selected_items)
-    return render_template("select.html")
-
-
-@app.route("/test", methods=["POST"])
-def test():
-    items = request.form.getlist("items")
-    selected_items = ", ".join(items)
-    # return f"選択された項目は: {selected_items} です"
-    return items
+    # return render_template("select.html")
 
 
 if __name__ == "__main__":

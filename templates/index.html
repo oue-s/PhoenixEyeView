@@ -26,13 +26,13 @@
             fill: darkorange;
             font-size: 15px;
         }
-
     </style>
 </head>
 
 <body>
+    <h2>Phoenix Eye Viewer</h2>
     {% if current_user.is_authenticated %}
-    <p>Phoenix Eye Viewerへ ようこそ{{ current_user.name }} さん</p>
+    <p>ようこそ{{ current_user.name }} さん</p>
     {% else %}
     <p>ログインしていません</p>
     {% endif %}
@@ -45,7 +45,9 @@
     <a href=select>Select History</a>
 
     <script>
-        var myVariable = "/static/data/disp_guest_01.csv";
+        // var myVariable = "/static/data/disp_guest_01.csv";
+
+        var myVariable = "/static/data/disp_" + "{{ current_user.name }}" + ".csv"
 
     </script>
 
