@@ -1,6 +1,6 @@
 startYear,startMonth,startDay,endYear,endMonth,endDay,event,image,group,groupTitle,groupColor
--2400000,1,1,,,,ホモ・ハビリスの出現,favicon.ico,2,人類史,#33FF57
--1200000,1,1,,,,火の利用,favicon.ico,2,人類史,#33FF57
--400000,1,1,,,,ネアンデルタール人,static/img/test.jpg,2,人類史,#33FF57
--10000,1,1,,,,農耕開始,static/img/test_300.jpg,2,人類史,#33FF57
-1760,1,1,,,,産業革命,favicon.ico,2,人類史,#33FF57
+-2400000,1,1,,,,ホモ・ハビリスの出現,,2,人類史,
+-1200000,1,1,,,,火の利用,,2,人類史,
+-400000,1,1,,,,ネアンデルタール人,,2,人類史,
+-10000,1,1,,,,農耕開始,,2,人類史,
+1760,1,1,,,,産業革命,,2,人類史,

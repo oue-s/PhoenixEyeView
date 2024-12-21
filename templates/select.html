@@ -13,7 +13,9 @@
 </head>
 
 <body>
-    <h2>日本史特集</h2>
+    <a href=/ style="float:right">| Viewer |</a>
+
+    <h2>日本史</h2>
     <input type="checkbox" name="items">
     <p class="inline-elements">日本全史</p>
     <br>
@@ -29,7 +31,7 @@
     <input type="checkbox" name="items">
     <p class="inline-elements">文明開化 明治時代～昭和へ</p>
 
-    <h2>世界史特集</h2>
+    <h2>世界史</h2>
     <input type="checkbox" name="items">
     <p class="inline-elements">ヨーロッパ全史</p>
     <br>
@@ -64,6 +66,14 @@
     <p class="inline-elements">過去1万年の二酸化炭素濃度(水月湖 数値)</p>
     <br>
 
+    <h2>生物学</h2>
+    <input type="checkbox" name="items">
+    <p class="inline-elements">セミの一生</p>
+    <br>
+    <input type="checkbox" name="items">
+    <p class="inline-elements">細胞分裂のサイクル</p>
+    <br>
+
     <h2>(PR) スター◯ォーズ特集</h2>
     <input type="checkbox" name="items">
     <p class="inline-elements">ジェダ◯とダー◯サイドの戦いの歴史</p>
@@ -90,17 +100,18 @@
     <h2>戦国武将特集</h2>
 
     <form action="/" method="POST">
-        <button type="submit">決定     </button>
-        
+        <button type="submit">決定 </button>
+
         <label for="numberInput">時間軸変換:</label>
         <select id="numberInput" name="number" required>
-            <option value="0">無変換</option> 
-            <option value="1">起点を揃える</option> 
+            <option value="0">無変換</option>
+            <option value="1">起点を揃える</option>
             <option value="2">起点と終点を揃える</option>
             <option value="3">起点を揃え、任意の倍率</option>
             <option value="0">任意のポイントを揃える</option>
             <option value="0">人→猫 変換</option>
-        </select>       
+            <option value="0">対数変換</option>
+        </select>
 
         <br>
         <input type="checkbox" name="items" value="ieyasu">
@@ -109,22 +120,22 @@
         <input type="checkbox" name="items" value="nobunaga">
         <p class="inline-elements">織田信長の生涯</p>
         <br>
-        <input type="checkbox" name="items" value="dami_1">
+        <input type="checkbox" name="items" value="dummy_1">
         <p class="inline-elements">武田信玄の生涯</p>
         <br>
-        <input type="checkbox" name="items" value="dami_2">
+        <input type="checkbox" name="items" value="dummy_2">
         <p class="inline-elements">上杉謙信の生涯</p>
         <br>
-        <input type="checkbox" name="items" value="dami_1">
+        <input type="checkbox" name="items" value="dummy_1">
         <p class="inline-elements">今川義元の生涯</p>
         <br>
-        <input type="checkbox" name="items" value="dami_2">
+        <input type="checkbox" name="items" value="dummy_2">
         <p class="inline-elements">豊臣秀吉の生涯</p>
         <br>
-        <input type="checkbox" name="items" value="dami_1">
-        <p class="inline-elements">明智光秀の生涯</p>
+        <input type="checkbox" name="items" value="earth_point">
+        <p class="inline-elements">(仮)地質年代</p>
         <br>
-        <input type="checkbox" name="items" value="dami_2">
+        <input type="checkbox" name="items" value="dummy_2">
         <p class="inline-elements">浅野長政の生涯</p>
         <br>
         <input type="checkbox" name="items" value="hachimantai">

@@ -27,7 +27,6 @@ def unauthorized_handler():
 
 # ユーザー登録フォームの表示・登録処理
 @app.route("/register", methods=["GET", "POST"])
-@login_required
 def register():
     if request.method == "POST":
         # データの検証
@@ -65,7 +64,7 @@ def login():
         user = User.select().where(User.email == request.form["email"]).first()
         if user is not None and check_password_hash(user.password, request.form["password"]):
             login_user(user)
-            #flash(f"ようこそ！ {user.name} さん")
+            # flash(f"ようこそ！ {user.name} さん")
             return redirect("/")
 
         # NGならフラッシュメッセージを設定
@@ -103,24 +102,24 @@ def unregister():
 def index():
 
     if request.method == "POST":
-        # user = User.select().where(User.email == request.form["email"]).first()
-        # postメソッドでユーザーから指定される
-        # his_0_name = "earth_point"
-        # his_1_name = "human_point"
-        items = request.form.getlist("items")
-        his_0_name = items[0]
-        his_1_name = items[1]
-
-        # ここはloginユーザー名をつけたい
-        # disp_his_name = "disp_2"
-        disp_his_name = f"disp_{current_user.name}"
-        # postメソッド で時間軸変換を指定する
-        # 現状 1 起点を揃える 2 起点と終点を揃える 3 起点を揃えて、傾きを変える
-        # calc_method = 0
-        calc_method = int(request.form["number"])
-        # 予備の変数 現状slopeに使う
-        a = 7
         try:
+            # user = User.select().where(User.email == request.form["email"]).first()
+            # postメソッドでユーザーから指定される
+            # his_0_name = "earth_point"
+            # his_1_name = "human_point"
+            items = request.form.getlist("items")
+            his_0_name = items[0]
+            his_1_name = items[1]
+
+            # ここはloginユーザー名をつけたい
+            # disp_his_name = "disp_2"
+            disp_his_name = f"disp_{current_user.name}"
+            # postメソッド で時間軸変換を指定する
+            # 現状 1 起点を揃える 2 起点と終点を揃える 3 起点を揃えて、傾きを変える
+            # calc_method = 0
+            calc_method = int(request.form["number"])
+            # 予備の変数 現状slopeに使う
+            a = 7
             # 指定の加工が施されたCSVファイルが作成される
             create_crrent_disp(his_0_name, his_1_name, disp_his_name, calc_method, a)
             return render_template("index.html")
